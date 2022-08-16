@@ -10,9 +10,18 @@ module.exports = {
   module: {
     rules: [
       {
-        use: 'babel-loader',
-        test: /\.js$/,
-        exclude: /node_modules/
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ["@babel/env", "@babel/react"]
+          }
+        },
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+      },
+      {
+        use: ['style-loader', 'css-loader'],
+        test: /\.css$/
       }
     ]
   },
@@ -20,5 +29,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'client/index.html'
     })
-  ]
+  ],
+  mode: 'development',
+  devtool: "source-map",
+  resolve: {
+    extensions: [".js", ".jsx", "*"],
+  },
+  devServer: {
+    historyApiFallback: true
+  },
 };
