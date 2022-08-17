@@ -33,8 +33,7 @@ app.use(session({
   saveUninitialized: true,
   secret: 'aaabbbccc',
   store: new MongoStore({
-    mongoUrl: MONGO_URI,
-    autoReconnect: true
+    mongoUrl: MONGO_URI
   })
 }));
 

@@ -15,12 +15,20 @@ const mutation = new GraphQLObjectType({
         email: { type: GraphQLString },
         password: { type: GraphQLString }
       },
-      resolve(source, { email, password }, context) {
-        return AuthService.signup({ email, password, req: context });
+      // req is from Express
+      resolve(parentValue, { email, password }, req) {
+        return AuthService.signup({ email, password, req });
+      }
+    },
+    logout: {
+      type: UserType,
+      resolve(parentValue, args, req) {
+        const { user } = req;
+        req.logout(() => {});
+        return user;
       }
     }
   }
 });
-
 
 module.exports = mutation;
