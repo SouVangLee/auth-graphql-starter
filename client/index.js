@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 const Root = () => {
   return (
@@ -9,4 +9,6 @@ const Root = () => {
   );
 };
 
-ReactDOM.render(<Root />, document.querySelector('#root'));
+const container = document.querySelector('#root');
+const root = createRoot(container);
+root.render(<Root />);
