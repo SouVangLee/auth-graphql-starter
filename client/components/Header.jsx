@@ -1,10 +1,14 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
+import { Link , useNavigate} from 'react-router-dom';
+
 import CURRENT_USER from '../queries/currentUser';
-import { Link } from 'react-router-dom';
+import LOGOUT from '../mutations/logOut';
 
 const Header = (props) => {
   const { data, loading, error } = useQuery(CURRENT_USER);
+  const [logoutUser] = useMutation(LOGOUT);
+  const navigate = useNavigate();
 
   if (loading) return <div />;
   if (error) return <p>There was an error: {error}</p>;
@@ -12,8 +16,20 @@ const Header = (props) => {
 
   const signUp = () => <Link path="/signup" />
   const login = () => <Link path="/login" />
+  const logOut = () => {
+    logoutUser()
+      .then(res => {
+        console.log('LOGOUT_USER_RESPONSE', res);
+        navigate('/');
+      });
+  }
+
   const renderButtons = () => {
-    if (data.currentUser) return <button>Logout</button>;
+    if (data.currentUser) {
+      return (
+      <button onClick={logOut}>Logout</button>
+      );
+    };
 
     return (
       <div>

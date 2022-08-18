@@ -24,6 +24,7 @@ const Root = () => {
       <HashRouter>
         <Routes>
           <Route path='/' element={<App />} />
+          {/* <Route path='/signup' element={<Sign} */}
         </Routes>
       </HashRouter>
     </ApolloProvider>
