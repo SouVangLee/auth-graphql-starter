@@ -6,7 +6,7 @@ import CURRENT_USER from '../queries/currentUser';
 import LOGOUT from '../mutations/logOut';
 
 const Header = (props) => {
-  const { data, loading, error } = useQuery(CURRENT_USER);
+  const { data, loading, error, client } = useQuery(CURRENT_USER);
   const [logoutUser] = useMutation(LOGOUT);
   const navigate = useNavigate();
 
@@ -20,8 +20,9 @@ const Header = (props) => {
     logoutUser()
       .then(res => {
         console.log('LOGOUT_USER_RESPONSE', res);
-        navigate('/');
-      });
+        client.resetStore();
+      })
+      .then(() => navigate('/'));
   }
 
   const renderButtons = () => {
