@@ -2,9 +2,11 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import App from './components/App';
 import './style/reset.css';
 import './style/styles.css'
+
+import App from './components/App';
+import UserForm from './components/UserForm';
 
 const link = createHttpLink({
   uri: '/graphql',
@@ -24,7 +26,8 @@ const Root = () => {
       <HashRouter>
         <Routes>
           <Route path='/' element={<App />} />
-          {/* <Route path='/signup' element={<Sign} */}
+          <Route path='/signup' element={<UserForm />} />
+          <Route path='/login' element={<UserForm />} />
         </Routes>
       </HashRouter>
     </ApolloProvider>

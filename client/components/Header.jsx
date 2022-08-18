@@ -13,9 +13,6 @@ const Header = (props) => {
   if (loading) return <div />;
   if (error) return <p>There was an error: {error}</p>;
 
-
-  const signUp = () => <Link path="/signup" />
-  const login = () => <Link path="/login" />
   const logOut = () => {
     logoutUser()
       .then(res => {
@@ -34,8 +31,12 @@ const Header = (props) => {
 
     return (
       <div>
-        <button onClick={signUp}>Sign Up</button>
-        <button onClick={login}>Login</button>
+        <Link to="/signup">
+          <button>Sign Up</button>
+        </Link>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
       </div>
     )
   }
