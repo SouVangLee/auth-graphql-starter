@@ -1,11 +1,18 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import App from './components/App';
+import './style/reset.css';
+import './style/styles.css'
+
+const link = createHttpLink({
+  uri: '/graphql',
+  credentials: 'same-origin',
+});
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  link,
   cache: new InMemoryCache({
     dataIdFromObject: obj => obj.id
   }),

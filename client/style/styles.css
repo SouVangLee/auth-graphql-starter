@@ -1,0 +1,27 @@
+.navbar {
+  border-bottom: 2px solid grey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 10px;
+}
+
+.nav-wrapper button:first-child{
+  margin-right: 10px;
+}
+
+.home-link {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 15px 10px;
+}
+
+.home-link:hover {
+  cursor: pointer;
+  color: red;
+  text-decoration: underline;
+}
