@@ -7,7 +7,7 @@ import SIGN_UP from '../mutations/signup';
 import CURRENT_USER from '../queries/currentUser';
 
 const SignUp = () => {
-  const [signup, {data, error}] = useMutation(SIGN_UP);
+  const [signup] = useMutation(SIGN_UP);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 

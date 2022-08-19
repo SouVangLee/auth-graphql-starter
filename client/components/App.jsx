@@ -1,11 +1,13 @@
 import React from 'react';
 import Header from './Header';
 
-const App = ({ children}) => {
+import Splash from './Splash';
+
+const App = (props) => {
   return (
     <div>
       <Header />
-      { children }
+      <Splash />
     </div>
   );
 };

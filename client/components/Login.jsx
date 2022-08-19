@@ -8,7 +8,7 @@ import LOGIN from '../mutations/login';
 import CURRENT_USER from '../queries/currentUser';
 
 const Login = () => {
-  const [login, {data, error}] = useMutation(LOGIN);
+  const [login] = useMutation(LOGIN);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
