@@ -12,11 +12,10 @@ const Header = (props) => {
 
   if (loading) return <div />;
   if (error) return <p>There was an error: {error}</p>;
-
+  
   const logOut = () => {
     logoutUser()
       .then(res => {
-        console.log('LOGOUT_USER_RESPONSE', res);
         client.resetStore();
       })
       .then(() => navigate('/'));

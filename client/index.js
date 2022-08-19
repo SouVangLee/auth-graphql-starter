@@ -6,7 +6,8 @@ import './style/reset.css';
 import './style/styles.css'
 
 import App from './components/App';
-import UserForm from './components/UserForm';
+import SignUp from './components/SignUp';
+import Login from './components/Login';
 
 const link = createHttpLink({
   uri: '/graphql',
@@ -26,8 +27,8 @@ const Root = () => {
       <HashRouter>
         <Routes>
           <Route path='/' element={<App />} />
-          <Route path='/signup' element={<UserForm />} />
-          <Route path='/login' element={<UserForm />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </HashRouter>
     </ApolloProvider>
