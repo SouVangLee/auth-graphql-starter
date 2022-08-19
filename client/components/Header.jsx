@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { Link , useNavigate} from 'react-router-dom';
 
 import CURRENT_USER from '../queries/currentUser';
-import LOGOUT from '../mutations/logOut';
+import LOGOUT from '../mutations/logout';
 
 const Header = (props) => {
   const { data, loading, error, client } = useQuery(CURRENT_USER);
