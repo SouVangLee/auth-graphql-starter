@@ -25,3 +25,7 @@
   color: red;
   text-decoration: underline;
 }
+
+.error-list > * {
+  color: red;
+}

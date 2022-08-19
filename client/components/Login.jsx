@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,7 +9,10 @@ import CURRENT_USER from '../queries/currentUser';
 
 const Login = () => {
   const [login, {data, error}] = useMutation(LOGIN);
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
+
+  console.log('errors', errors);
 
   const handleSubmit = (email, password) => {
     login({ 
@@ -18,11 +21,17 @@ const Login = () => {
         password,
       },
       refetchQueries: [{ query: CURRENT_USER }]
-    }).then(() => navigate('/'));
+    }).then(
+      () => navigate('/'), 
+      res => {
+        const getErrors = res.graphQLErrors.map(error => error.message);
+        setErrors(getErrors);
+      }
+    )
   }
 
   return (
-    <UserForm btnLabel={'Login'} handleSubmit={handleSubmit}/>
+    <UserForm btnLabel={'Login'} handleSubmit={handleSubmit} errors={errors}/>
   )
 };
 
