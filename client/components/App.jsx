@@ -1,13 +1,12 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Header from './Header';
 
-import Splash from './Splash';
-
-const App = (props) => {
+const App = () => {
   return (
     <div>
       <Header />
-      <Splash />
+      <Outlet />
     </div>
   );
 };

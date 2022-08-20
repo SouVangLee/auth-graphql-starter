@@ -19,7 +19,8 @@ const SignUp = () => {
       },
       refetchQueries: [{ query: CURRENT_USER }]
     }).then(
-      () => navigate('/'), 
+      res => console.log('res', res),
+      // () => navigate('/dashboard', { replace: true }), 
       res => {
         const getErrors = res.graphQLErrors.map(error => error.message);
         setErrors(getErrors);
