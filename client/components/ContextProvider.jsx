@@ -2,7 +2,6 @@ import React, { createContext, useContext, useState } from 'react';
 
 const initialState = {
   currentUser: null,
-  setCurrentUser: null,
 };
 
 const PageContext = createContext(initialState);

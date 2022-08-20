@@ -1,15 +1,19 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
+import { 
+  ApolloClient, 
+  ApolloProvider, 
+  InMemoryCache, 
+  createHttpLink } from '@apollo/client';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import './style/reset.css';
 import './style/styles.css'
 
-import { PageContextProvider } from './components/ContextProvider';
 import App from './components/App';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import RequiredAuth from './components/RequiredAuth';
 
 const link = createHttpLink({
   uri: '/graphql',
@@ -29,7 +33,9 @@ const Root = () => {
       <HashRouter>
         <Routes>
           <Route path='/' element={<App />}>
-            <Route path='dashboard' element={<Dashboard />} />
+            <Route 
+              path='dashboard' 
+              element={<Dashboard />} />
           </Route>
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<Login />} />

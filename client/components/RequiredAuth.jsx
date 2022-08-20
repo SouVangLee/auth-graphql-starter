@@ -3,20 +3,17 @@ import { useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import CURRENT_USER from '../queries/currentUser';
 
-const Dashboard = () => {
+
+const RequiredAuth = ({ children }) => {
   const navigate = useNavigate();
   const { data, loading } = useQuery(CURRENT_USER);
 
-  if (loading) return <div />;
-
-  if (!loading && !data.currentUser) return navigate('/login');
+  if (loading) return <div />
+  useEffect(() => {
+    if (!loading && !data.currentUser) return navigate('/login', { replace: true });
+  }, [loading, data]);
   
-  return (
-    <div>
-      <h1>Dashboard Page</h1>
-      <h2>You should only see this if you are logged in</h2>
-    </div>
-  );
+  return children;
 };
 
-export default Dashboard;
+export default RequiredAuth;
